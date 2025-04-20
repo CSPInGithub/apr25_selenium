@@ -20,32 +20,35 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      - name: Install Chrome dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            wget \
-            unzip \
-            curl \
-            fonts-liberation \
-            libnss3 \
-            libxss1 \
-            libatk-bridge2.0-0 \
-            libatk1.0-0 \
-            libcups2 \
-            libdrm2 \
-            libgbm1 \
-            libgtk-3-0 \
-            lsb-release \
-            xdg-utils
+      # - name: Install Chrome dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y \
+      #       wget \
+      #       unzip \
+      #       curl \
+      #       fonts-liberation \
+      #       libnss3 \
+      #       libxss1 \
+      #       libatk-bridge2.0-0 \
+      #       libatk1.0-0 \
+      #       libcups2 \
+      #       libdrm2 \
+      #       libgbm1 \
+      #       libgtk-3-0 \
+      #       lsb-release \
+      #       xdg-utils
 
-      - name: Install latest Chrome
-        run: |
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -f install -y
-          
+      # - name: Install latest Chrome
+      #   run: |
+      #     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      #     sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -f install -y
+
       - name: Check Chrome Version
         run: google-chrome --version
+
+      - name: Check ChromeDriver Version
+        run: chromedriver --version
 
       - name: Build and Run Tests with Maven
         run: mvn clean test -Dlogin.username=${{ secrets.LOGIN_USERNAME }} -Dlogin.password=${{ secrets.LOGIN_PASSWORD }}
