@@ -43,22 +43,22 @@ public class LoginTest {
 
                 driver.manage().deleteAllCookies();
 
-                driver.get("https://www.naukri.com/");
+                driver.get("https://www.naukri.com/nlogin/login");
                 System.out.println("website opend successfully");
 
-                WebElement jsLogin = driver.findElement(By.xpath("//a[@title='Jobseeker Login']"));
+                WebElement jsLogin = driver.findElement(By.cssSelector("#login_Layer"));
 
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", jsLogin);
 
                 System.out.println("js login clicked successfully");
 
-                driver.findElement(By.xpath("//input[@placeholder='Enter your active Email ID / Username']"))
+                driver.findElement(By.cssSelector("#usernameField"))
                                 .sendKeys(System.getProperty("login.username"));
 
-                driver.findElement(By.xpath("//input[@placeholder='Enter your password']"))
+                driver.findElement(By.cssSelector("#passwordField"))
                                 .sendKeys(System.getProperty("login.password"));
 
-                WebElement loginBtn = driver.findElement(By.xpath("//button[@class='btn-primary loginButton']"));
+                WebElement loginBtn = driver.findElement(By.cssSelector(".waves-effect.waves-light.btn-large.btn-block.btn-bold.blue-btn.textTransform"));
                 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginBtn);
                 loginBtn.click();
 
