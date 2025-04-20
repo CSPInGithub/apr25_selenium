@@ -4,16 +4,15 @@ on:
   push:
     branches: [ "master" ]
   workflow_dispatch:
-  
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
     - name: Set up JDK 11
       uses: actions/setup-java@v4
       with:
@@ -25,4 +24,9 @@ jobs:
       run: mvn clean verify -Dlogin.username=${{ secrets.LOGIN_USERNAME }} -Dlogin.password=${{ secrets.LOGIN_PASSWORD }}
       working-directory: practice
 
-    
+    - name: Upload Screenshot Artifact
+      if: always()  # Run even if tests fail
+      uses: actions/upload-artifact@v4
+      with:
+        name: dashboard-screenshot
+        path: practice/target/dashboard_screenshot.png
