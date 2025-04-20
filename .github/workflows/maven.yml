@@ -28,5 +28,6 @@ jobs:
   
     - name: Build and Run tests with maven
       run: mvn clean test
+      working-directory: practice
 
     
