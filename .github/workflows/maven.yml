@@ -26,7 +26,7 @@ jobs:
         echo "MAVEN_OPTS=-Dlogin.username=${{ secrets.LOGIN_USERNAME }} \
          -Dlogin.password=${{ secrets.LOGIN_PASSWORD }}" >> $GITHUB_ENV
   
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+    - name: Build and Run tests with maven
+      run: mvn clean test
 
     
