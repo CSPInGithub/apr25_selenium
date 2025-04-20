@@ -23,7 +23,22 @@ jobs:
     - name: Install dependencies for Chrome
       run: |
         sudo apt-get update
-        sudo apt-get install -y wget gnupg unzip curl xvfb libxi6 libgconf-2-4 libappindicator1 libindicator7 fonts-liberation libnss3 libxss1 lsb-release xdg-utils
+        sudo apt-get install -y \
+          wget \
+          unzip \
+          curl \
+          fonts-liberation \
+          libnss3 \
+          libxss1 \
+          libasound2 \
+          libatk-bridge2.0-0 \
+          libatk1.0-0 \
+          libcups2 \
+          libdrm2 \
+          libgbm1 \
+          libgtk-3-0 \
+          lsb-release \
+          xdg-utils
 
     - name: Install latest Chrome
       run: |
