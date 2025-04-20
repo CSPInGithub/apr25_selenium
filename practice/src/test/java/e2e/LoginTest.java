@@ -49,7 +49,7 @@ public class LoginTest {
                 .click();
 
         // Assert
-Thread.sleep(2000);
+Thread.sleep(5000);
         // wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".reco-title")));
         String actual = driver.getCurrentUrl();
 
