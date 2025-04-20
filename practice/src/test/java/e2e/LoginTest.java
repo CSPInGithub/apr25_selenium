@@ -29,7 +29,7 @@ public class LoginTest {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--headless=new");
                 options.addArguments("--incognito");
-                // options.addArguments("--window-size=1920,1080");
+                options.addArguments("--window-size=1920,1080");
                 options.addArguments("--disable-gpu");
                 options.addArguments("--no-sandbox");
                 options.addArguments("--disable-dev-shm-usage");
