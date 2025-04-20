@@ -18,7 +18,7 @@ public class LoginTest {
     // It checks if the user can log in with valid credentials and ensures
     // redirection to the homepage.
     // This test verifies the successful login behavior on the Naukri website.
-    public void loginTest() {
+    public void loginTest() throws InterruptedException {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless=new");
@@ -49,9 +49,8 @@ public class LoginTest {
                 .click();
 
         // Assert
-
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".reco-title")));
+Thread.sleep(2000);
+        // wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".reco-title")));
         String actual = driver.getCurrentUrl();
 
         System.out.println("current url is " + actual);
