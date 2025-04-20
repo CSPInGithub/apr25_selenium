@@ -7,9 +7,11 @@ import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
@@ -53,8 +55,9 @@ public class LoginTest {
                 driver.findElement(By.xpath("//input[@placeholder='Enter your password']"))
                                 .sendKeys(System.getProperty("login.password"));
 
-                driver.findElement(By.xpath("//button[@class='btn-primary loginButton']"))
-                                .click();
+                WebElement loginBtn = driver.findElement(By.xpath("//button[@class='btn-primary loginButton']"));
+
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", loginBtn);
 
                 // Capture Screenshot
                 TakesScreenshot screenshot = (TakesScreenshot) driver;
