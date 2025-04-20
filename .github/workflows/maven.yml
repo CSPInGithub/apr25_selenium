@@ -20,7 +20,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Install dependencies for Chrome
+    - name: Install Chrome dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y \
@@ -30,7 +30,6 @@ jobs:
           fonts-liberation \
           libnss3 \
           libxss1 \
-          libasound2 \
           libatk-bridge2.0-0 \
           libatk1.0-0 \
           libcups2 \
@@ -50,7 +49,7 @@ jobs:
       working-directory: practice
 
     - name: Upload Screenshot Artifact
-      if: always()  # Run even if tests fail
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: dashboard-screenshot
