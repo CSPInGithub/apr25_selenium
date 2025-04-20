@@ -20,8 +20,18 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
+    - name: Install dependencies for Chrome
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget gnupg unzip curl xvfb libxi6 libgconf-2-4 libappindicator1 libindicator7 fonts-liberation libnss3 libxss1 lsb-release xdg-utils
+
+    - name: Install latest Chrome
+      run: |
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -f install -y
+
     - name: Build and Run Tests with Maven
-      run: mvn clean test -Dlogin.username=${{secrets.LOGIN_USERNAME}} -Dlogin.password=${{secrets.LOGIN_PASSWORD}}
+      run: mvn clean test -Dlogin.username=${{ secrets.LOGIN_USERNAME }} -Dlogin.password=${{ secrets.LOGIN_PASSWORD }}
       working-directory: practice
 
     - name: Upload Screenshot Artifact
