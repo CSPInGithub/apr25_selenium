@@ -44,7 +44,8 @@ jobs:
         run: chromedriver --version
 
       - name: Build and Run Tests with Maven
-        run: mvn clean test -Dlogin.username=${{ secrets.LOGIN_USERNAME }} -Dlogin.password=${{ secrets.LOGIN_PASSWORD }} -f practice/pom.xml -X
+        run: |
+          mvn clean test -Dlogin.username="${{secrets.LOGIN_USERNAME}}" -Dlogin.password="${{secrets.LOGIN_PASSWORD}}" -f practice/pom.xml
       
       - name: Upload Screenshot Artifact
         if: always()
