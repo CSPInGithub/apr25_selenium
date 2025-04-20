@@ -55,7 +55,7 @@ public class LoginTest {
                                 .sendKeys(System.getProperty("login.username"));
 
                 driver.findElement(By.xpath("//input[@placeholder='Enter your password']"))
-                                .sendKeys(System.getProperty("login.password"));
+                                .sendKeys("Naukri@2025@");
 
                 WebElement loginBtn = driver.findElement(By.xpath("//button[@class='btn-primary loginButton']"));
                 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginBtn);
