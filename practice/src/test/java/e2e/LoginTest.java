@@ -14,6 +14,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -58,8 +60,9 @@ public class LoginTest {
                 driver.findElement(By.cssSelector("#passwordField"))
                                 .sendKeys(System.getProperty("login.password"));
 
-                WebElement loginBtn = driver.findElement(By.cssSelector(".waves-effect.waves-light.btn-large.btn-block.btn-bold.blue-btn.textTransform"));
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginBtn);
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                WebElement loginBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(
+                                ".waves-effect.waves-light.btn-large.btn-block.btn-bold.blue-btn.textTransform")));
                 loginBtn.click();
 
                 System.out.println("login clicked successfully after entering credentials..");
