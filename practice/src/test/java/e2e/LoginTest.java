@@ -43,11 +43,15 @@ public class LoginTest {
                 driver.manage().deleteAllCookies();
 
                 driver.get("https://www.naukri.com/");
-                System.out.println("opend successfully");
+                System.out.println("website opend successfully");
 
-                driver.findElement(By.xpath("//a[@title='Jobseeker Login']")).click();
+                WebElement jsLogin = driver.findElement(By.xpath("//a[@title='Jobseeker Login']"));
 
-                System.out.println("clicked successfully");
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", jsLogin);
+
+                
+
+                System.out.println("js login clicked successfully");
 
                 driver.findElement(By.xpath("//input[@placeholder='Enter your active Email ID / Username']"))
                                 .sendKeys(System.getProperty("login.username"));
@@ -56,8 +60,11 @@ public class LoginTest {
                                 .sendKeys(System.getProperty("login.password"));
 
                 WebElement loginBtn = driver.findElement(By.xpath("//button[@class='btn-primary loginButton']"));
+                
 
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", loginBtn);
+
+                System.out.println("login clicked successfully after entering credentials..");
 
                 // Capture Screenshot
                 TakesScreenshot screenshot = (TakesScreenshot) driver;
