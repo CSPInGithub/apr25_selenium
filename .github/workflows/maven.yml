@@ -23,8 +23,8 @@ jobs:
 
     - name: Set environment variables from GitHub secrets
       run: |
-        echo "MAVEN_OPTS=-Dlogin.username=${{ secrets.LOGIN_USERNAME }} \
-         -Dlogin.password=${{ secrets.LOGIN_PASSWORD }}" >> $GITHUB_ENV
+        echo "MAVEN_OPTS=-Dlogin.username=${{secrets.LOGIN_USERNAME}} \
+         -Dlogin.password=${{secrets.LOGIN_PASSWORD}}" >> $GITHUB_ENV
   
     - name: Build and Run tests with maven
       run: mvn clean test
