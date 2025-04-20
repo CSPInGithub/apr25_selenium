@@ -60,7 +60,7 @@ public class LoginTest {
                                 .sendKeys(System.getProperty("login.password"));
 
                 WebElement loginBtn = driver.findElement(By.xpath("//button[@class='btn-primary loginButton']"));
-                
+
 
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", loginBtn);
 
@@ -73,7 +73,7 @@ public class LoginTest {
                 Files.copy(srcFile.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
                 // Assert
-                Thread.sleep(5000);
+                Thread.sleep(9000);
                 // wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".reco-title")));
                 String actual = driver.getCurrentUrl();
 
