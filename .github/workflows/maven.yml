@@ -20,25 +20,25 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      - name: Install Chrome
-        run: |
-          Invoke-WebRequest -Uri https://dl.google.com/chrome/install/latest/chrome_installer.exe -OutFile chrome_installer.exe
-          Start-Process chrome_installer.exe -ArgumentList '/silent', '/install' -NoNewWindow -Wait
-          Remove-Item chrome_installer.exe
+      # - name: Install Chrome
+      #   run: |
+      #     Invoke-WebRequest -Uri https://dl.google.com/chrome/install/latest/chrome_installer.exe -OutFile chrome_installer.exe
+      #     Start-Process chrome_installer.exe -ArgumentList '/silent', '/install' -NoNewWindow -Wait
+      #     Remove-Item chrome_installer.exe
        
-      - name: Install ChromeDriver
-        run: |
-          $chromeVersion = (Get-Command chrome).FileVersionInfo.ProductVersion
-          $chromeDriverVersion = $chromeVersion.Split('.')[0..1] -join '.'
-          Invoke-WebRequest -Uri "https://chromedriver.storage.googleapis.com/$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$chromeDriverVersion)/chromedriver_win32.zip" -OutFile chromedriver.zip
-          Expand-Archive chromedriver.zip -DestinationPath C:\chromedriver
-          Remove-Item chromedriver.zip
-          Move-Item C:\chromedriver\chromedriver.exe C:\Windows\System32
+      # - name: Install ChromeDriver
+      #   run: |
+      #     $chromeVersion = (Get-Command chrome).FileVersionInfo.ProductVersion
+      #     $chromeDriverVersion = $chromeVersion.Split('.')[0..1] -join '.'
+      #     Invoke-WebRequest -Uri "https://chromedriver.storage.googleapis.com/$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$chromeDriverVersion)/chromedriver_win32.zip" -OutFile chromedriver.zip
+      #     Expand-Archive chromedriver.zip -DestinationPath C:\chromedriver
+      #     Remove-Item chromedriver.zip
+      #     Move-Item C:\chromedriver\chromedriver.exe C:\Windows\System32
 
-      - name: Check Chrome Version
-        run: |
-          $chromeVersion = (Get-Command chrome).FileVersionInfo.ProductVersion
-          Write-Output "Chrome version: $chromeVersion"
+      # - name: Check Chrome Version
+      #   run: |
+      #     $chromeVersion = (Get-Command chrome).FileVersionInfo.ProductVersion
+      #     Write-Output "Chrome version: $chromeVersion"
 
       - name: Check ChromeDriver Version
         run: chromedriver --version
