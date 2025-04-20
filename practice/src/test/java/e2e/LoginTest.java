@@ -22,7 +22,7 @@ public class LoginTest {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless=new");
-        // options.addArguments("--disable-blink-features=AutomationControlled");
+        options.addArguments("--disable-blink-features=AutomationControlled");
         options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
         WebDriver driver = new ChromeDriver(options);
 
